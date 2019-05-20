@@ -10,14 +10,13 @@ class Checkbox extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         const { data, limit } = nextProps;
         return {
-            data,
-            limit
+            data:data || [],
+            limit:limit || 2
         }
     }
 
     toggle = (e, i) => {
         var { data, count, limit } = this.state;
-        // console.log("count", count);
         if (!data[i].isChecked && count < limit) {
             count = data[i].isChecked ? count == 0 ? count : count - 1 : count + 1
             data[i].isChecked = true
